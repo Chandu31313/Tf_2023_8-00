@@ -65,6 +65,7 @@ resource "aws_route_table_association" "pub-route-asc" {
   route_table_id = aws_route_table.ecomm-pub-rt.id
 }
 
+
 #private route table
 
 resource "aws_route_table" "ecomm-pvt-rt" {
@@ -73,3 +74,11 @@ resource "aws_route_table" "ecomm-pvt-rt" {
     Name = "ecomm-private-route-table"
   }
 }
+
+# private route table association
+
+resource "aws_route_table_association" "pvt-route-asc" {
+  subnet_id      = aws_subnet.ecomm-pb-sn.id
+  route_table_id = aws_route_table.ecomm-pvt-rt.id
+}
+
