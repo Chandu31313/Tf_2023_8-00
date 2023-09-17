@@ -50,10 +50,17 @@ resource "aws_route_table" "ecomm-pub-rt" {
     cidr_block = "0.0.0.0/0"
     gateway_id = aws_internet_gateway.ecomm-igw.id
   }
-
   
-
-  tags = {
+  
+  
+   tags = {
     Name = "ecomm-public-rout-table"
   }
+}
+
+# public route table association
+
+resource "aws_route_table_association" "pub-route-asc" {
+  subnet_id      = aws_subnet.ecomm-pb-sn.id
+  route_table_id = aws_route_table.ecomm-pub-rt.id
 }
